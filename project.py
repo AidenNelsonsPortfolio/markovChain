@@ -130,8 +130,14 @@ def main(filepath: str, kGram: int, outputLen: int):
 # Call main function
 if(__name__ == "__main__"):
 	# Get user to choose from available text files:
-	print("Choose the number of the text file to read from:")
 	files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
+
+	# If no text files are found, exit
+	if len(files) == 0:
+		print("No text files found in CWD, exiting...")
+		exit()
+
+	print("Choose the number of the text file to read from:")
 	for idx, file in enumerate(files, 1):
 		print(f"\t{idx}. {file}")
 
